@@ -16,6 +16,11 @@ export const FieldSet = styled.fieldset<{
         .ant-input-affix-wrapper {
             border: 1px solid ${theme.colors.dovegray};
             background-color: ${theme.colors.white};
+            &:focus,
+            &:focus-within {
+                border-color: ${theme.colors.codgray};
+                box-shadow: none;
+            }
 
             input.ant-input {
                 background-color: ${theme.colors.white};
@@ -37,6 +42,11 @@ export const FieldSet = styled.fieldset<{
         .ant-input-affix-wrapper {
             border: 1px solid ${theme.colors.white};
             background-color: ${theme.colors.shark};
+            &:focus,
+            &:focus-within {
+                border-color: ${theme.colors.dovegray};
+                box-shadow: none;
+            }
 
             input.ant-input {
                 background-color: ${theme.colors.shark};

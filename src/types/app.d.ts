@@ -14,6 +14,14 @@ declare namespace App {
         userId: number;
     }
 
+    type User = {
+        id: number;
+        name: string;
+        username: string;
+        email: number;
+        password: string;
+    }
+
     type Products = {
         name: string;
         price: number;
@@ -46,7 +54,7 @@ declare namespace App {
     interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
         editing: boolean;
         dataIndex: string;
-        title: any;
+        title: string;
         inputType: 'number' | 'text';
         record: Item;
         index: number;

@@ -27,7 +27,7 @@
       "id": 1,
       "name": "Leanne Graham",
       "username": "Bret",
-      "email": "Sincere@april.biz",
+      "email": "Sincere@april.biz",      
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -44,13 +44,14 @@
         "name": "Romaguera-Crona",
         "catchPhrase": "Multi-layered client-server neural-net",
         "bs": "harness real-time e-markets"
-      }
+      },
+      "password": "12345678"
     },
     {
       "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
-      "email": "Shanna@melissa.tv",
+      "email": "Shanna@melissa.tv",      
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -67,13 +68,14 @@
         "name": "Deckow-Crist",
         "catchPhrase": "Proactive didactic contingency",
         "bs": "synergize scalable supply-chains"
-      }
+      },
+      "password": "12345678"
     },
     {
       "id": 3,
       "name": "Clementine Bauch",
       "username": "Samantha",
-      "email": "Nathan@yesenia.net",
+      "email": "Nathan@yesenia.net",      
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -90,7 +92,8 @@
         "name": "Romaguera-Jacobson",
         "catchPhrase": "Face to face bifurcated interface",
         "bs": "e-enable strategic applications"
-      }
+      },
+      "password": "12345678"
     }
   ]
 }

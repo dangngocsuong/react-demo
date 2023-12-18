@@ -84,7 +84,7 @@ const Input: FunctionComponent<{
 
         return (
             <FieldSet $theme={`${theme}`}>
-                {label && <Label required={Boolean(rules.required)}>{label}</Label>}
+                {label && <Label required={Boolean(rules?.required)}>{label}</Label>}
                 <FormControl width={width}>
                 <AntInput
                     type={inputType}

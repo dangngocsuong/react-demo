@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Button } from "antd";
+import theme from "styles/theme";
 
-export const StyleButton = styled(Button)`
+export const StyleButton = styled(Button)<{$theme?:string}>`
     position: relative;
     display: flex;
     justify-content: center;
@@ -21,4 +22,21 @@ export const StyleButton = styled(Button)`
         margin-inline-start: 8px;
 
     }
+    
+    ${({$theme}) => $theme === "light" && css`
+        background-color: ${theme.colors.monza};
+        &.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
+            background-color: ${theme.colors.milanored} ;
+        }
+    `}
+
+    ${({$theme}) => $theme === "dark" && css`
+        background-color: transparent;
+        border: 1px solid ${theme.colors.white};
+        
+        &.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
+            background-color: ${theme.colors.milanored};
+            border-color: ${theme.colors.milanored};
+        }
+    `}    
 `

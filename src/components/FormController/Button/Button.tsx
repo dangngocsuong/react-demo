@@ -8,7 +8,8 @@ const Button: FunctionComponent<{
     icon?: ReactNode;
     iconPosition?: 'left' | 'right';
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-    loading: boolean;
+    loading?: boolean;
+    theme?: string;
 }> = ({
     type,
     text,
@@ -17,9 +18,8 @@ const Button: FunctionComponent<{
     iconPosition,
     onClick,
     loading,
+    theme,
 }) => {
-
-
     return (
         <StyleButton 
         type={type} 
@@ -28,8 +28,13 @@ const Button: FunctionComponent<{
         className={`icon-${iconPosition}`}
         onClick={onClick}
         loading={loading}
+        $theme={theme}
         >{text}</StyleButton>
     )
+}
+
+Button.defaultProps = {
+    onClick: () => null,
 }
 
 export default Button;
