@@ -1,6 +1,6 @@
 const Register = () => {
     return(
-        <>
+        <> Register
         </>
     )
 }
