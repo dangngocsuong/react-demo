@@ -9,8 +9,9 @@ import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { Button, FloatButton, Image, Input, Space } from "antd";
 import { Figure } from "styles/blog";
+import { FunctionComponent } from "react";
 
-const Footer = () => {
+const Footer: FunctionComponent = () => {
 
     const { control, handleSubmit, formState: { errors } } = useForm<App.FormFieldType>();
     const onSubmit = handleSubmit((data) => {

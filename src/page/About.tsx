@@ -1,7 +1,8 @@
 import { Container, MainConent } from "styles/common";
 import PageTitle from "../components/PageTitle/PageTitle";
+import { FunctionComponent } from "react";
 
-const About = () => {
+const About: FunctionComponent = () => {
     return (
         <>
             <PageTitle />

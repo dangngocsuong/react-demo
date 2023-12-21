@@ -32,6 +32,7 @@ declare namespace App {
         name: string;
         username: string;
         email: string;
+        password: string;
     }
 
     type Crumb = {

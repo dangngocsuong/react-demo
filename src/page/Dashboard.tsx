@@ -1,6 +1,7 @@
 import { ContainerFluid, MainConent } from "styles/common";
 import DashboardPosts from "../components/Dashboard/DashboardPosts";
-const Dashboard = () => {
+import { FunctionComponent } from "react";
+const Dashboard: FunctionComponent = () => {
     return (
         <MainConent>
             <ContainerFluid>

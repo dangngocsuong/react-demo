@@ -1,61 +1,85 @@
-import { FacebookFilled, InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
+import { FacebookFilled, InstagramOutlined, LoginOutlined, LogoutOutlined, TwitterOutlined } from "@ant-design/icons";
 import { Button, Image, MenuProps } from "antd";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { FunctionComponent, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 import { Container, Social } from "styles/common";
 import { SiteHeader, MenuTop, HeaderBottom, HeaderTop } from "./styled";
 import { useTranslation } from "react-i18next";
+import { isUserLoggedIn, removeSessionToken } from "store/sessionManager";
 
-const Header = () => {
+const Header: FunctionComponent = () => {
     const { theme, setTheme } = useTheme();
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
 
     const handleChangeMode = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
 
-    const [current, setCurrent] = useState('home');
+    const location = useLocation();
+    useEffect(() => {
+        setCurrentMenu(location.pathname);
+    },[location.pathname]);
+
+    const [currentMenu, setCurrentMenu] = useState(location.pathname);
     const items: MenuProps['items'] = [
         {
             label: (
                 <Link to="/">{t('home')}</Link>
             ),
-            key: 'home',
+            key: '/',
         },
         {
             label: (
                 <Link to="/about">{t('about')}</Link>
             ),
-            key: 'about',
+            key: '/about',
         },
         {
             label: (
                 <Link to="/blog">{t('blog')}</Link>
             ),
-            key: 'blog',
+            key: '/blog',
         },
         {
             label: (
                 <Link to="/contact">{t('contact')}</Link>
             ),
-            key: 'contact',
+            key: '/contact',
         },
         {
             label: (
                 <Link to="/dashboard">Dashboard</Link>
             ),
-            key: 'dashboard',
+            key: '/dashboard',
         },
-    ];
+    ]; 
+
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
-        setCurrent(e.key);
+        // setCurrentMenu(e.key);
+        if (!isUserLoggedIn()) {
+			return navigate('/signin');
+		}
     };
 
     const changeLanguage = () => {
         const lng: string = i18n.language === 'vi' ? 'en' : 'vi'
         i18n.changeLanguage(lng);
+    }
+
+    const handLogout = () => {
+        removeSessionToken();
+        navigate('/signin');
+    }
+
+    const handSignIn = () => {
+        navigate('/signin');
+    }
+
+    const handSignUp = () => {
+        navigate('/signup');
     }
 
     return (
@@ -76,13 +100,16 @@ const Header = () => {
                         <Link to="#"><InstagramOutlined /></Link>
                         <Button onClick={handleChangeMode} size={'large'}>{theme === 'light' ? 'Dark' : 'Light'}</Button>
                         <Button onClick={changeLanguage} size={'large'}>{i18n.language === 'vi' ? 'EN' : 'VI'}</Button>
+                        {!isUserLoggedIn() && <Button onClick={handSignIn} size={'large'} icon={<LoginOutlined />}>Signin</Button>}
+                        {!isUserLoggedIn() && <Button onClick={handSignUp} size={'large'} icon={<LoginOutlined />}>Signup</Button>}
+                        {isUserLoggedIn() && <Button onClick={handLogout} size={'large'} icon={<LogoutOutlined />}>Logout</Button>}
                     </Social>
                 </HeaderTop>
             </Container>
 
             <HeaderBottom>
                 <Container>
-                    <MenuTop onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+                    <MenuTop onClick={onClick} selectedKeys={[currentMenu]} mode="horizontal" items={items} />
                 </Container>
             </HeaderBottom>
         </SiteHeader>

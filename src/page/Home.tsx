@@ -1,16 +1,22 @@
+import { FunctionComponent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { isUserLoggedIn } from "store/sessionManager";
 import { Container, MainConent } from "styles/common";
-import { BoxLogin } from "styles/home";
-import Login from "components/Login/Login";
-import Register from "components/Register/Register";
-const Home = () => {
+const Home: FunctionComponent = () => {  
     
+    const navigate = useNavigate();
+	useEffect(() => {
+		if (isUserLoggedIn()) {
+            return navigate('/');
+		} else {
+			return navigate('/signin');
+		}  
+	},[]);
+
     return (
         <MainConent>
             <Container>
-                <BoxLogin>
-                    <Login />
-                    <Register />
-                </BoxLogin>
+                Home Page
             </Container>
         </MainConent>
     )

@@ -11,54 +11,48 @@ export const FieldSet = styled.fieldset<{
     .ant-input-affix-wrapper {
         flex: 1 1 0;
     }
+
+    .ant-input-affix-wrapper,
+    input.ant-input,
+    input:-internal-autofill-selected {
+        background-color: transparent;
+    }
     
-    ${({ $theme }) => $theme === 'light' && css`
-        .ant-input-affix-wrapper {
+    ${({ $theme }) => $theme === 'light' && css`        
+        :where(.ant-input-affix-wrapper),
+        :not(.ant-input-affix-wrapper) > input.ant-input {            
             border: 1px solid ${theme.colors.dovegray};
-            background-color: ${theme.colors.white};
+            color: ${theme.colors.shark};
+
             &:focus,
-            &:focus-within {
+            &:focus-within,
+            &:hover {
                 border-color: ${theme.colors.codgray};
                 box-shadow: none;
             }
 
-            input.ant-input {
-                background-color: ${theme.colors.white};
-                color: ${theme.colors.shark};
-
-                &::placeholder {
-                    color: ${theme.colors.dovegray};
-                }
-            }
-
-            .ant-input-prefix,
-            .ant-input-suffix {
-                color: ${theme.colors.shark};
+            &::placeholder,
+            ::placeholder {
+                color: ${theme.colors.dovegray};
             }
         }
     ` }
 
     ${({ $theme }) => $theme === 'dark' && css`
-        .ant-input-affix-wrapper {
+        :where(.ant-input-affix-wrapper),
+        :not(.ant-input-affix-wrapper) > input.ant-input {
             border: 1px solid ${theme.colors.white};
-            background-color: ${theme.colors.shark};
+            color: ${theme.colors.white};
+
             &:focus,
-            &:focus-within {
+            &:focus-within,
+            &:hover {
                 border-color: ${theme.colors.dovegray};
                 box-shadow: none;
             }
 
-            input.ant-input {
-                background-color: ${theme.colors.shark};
-                color: ${theme.colors.white};
-
-                &::placeholder {
-                    color: ${theme.colors.white};
-                }
-            }
-
-            .ant-input-prefix,
-            .ant-input-suffix {
+            &::placeholder,
+            ::placeholder {
                 color: ${theme.colors.white};
             }
         }

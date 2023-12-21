@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import PageTitle from "components/PageTitle/PageTitle";
 import axios from "axios";
 import Article from "components/Blog/Article";
@@ -9,7 +9,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useQuery } from "@tanstack/react-query";
 import { useController, useForm } from "react-hook-form";
 
-const Blog = () => {
+const Blog: FunctionComponent = () => {
     const [current, setCurrent] = useState(3);
     const { Text } = Typography;
 
